@@ -1,0 +1,10 @@
+SAFE LONG TEXT SAMPLE
+
+This is a larger safe text sample used to test upload and scanning performance.
+It contains repeated non-sensitive words.
+
+Paragraph 1: Project status is green.
+Paragraph 2: Development is ongoing.
+Paragraph 3: No secrets are included here.
+
+End of file.

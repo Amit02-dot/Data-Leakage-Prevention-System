@@ -1,0 +1,33 @@
+HOW TO RESUME YOUR DLPS PROJECT
+================================
+
+Your project files are safely saved in: c:\xampp\htdocs\DLPs
+
+STEP 1: START THE SERVER
+1. Open "XAMPP Control Panel".
+2. Click "Start" next to Apache.
+3. Click "Start" next to MySQL.
+
+STEP 2: OPEN THE PROJECT
+Option A (Terminal):
+   Open your terminal and type: 
+   start http://localhost/DLPs/
+
+Option B (Browser):
+   Open Chrome and go to:
+   http://localhost/DLPs/
+
+STEP 3: LOGINS
+Admin Portal: http://localhost/DLPs/admin-login.php
+   User: admin
+   Pass: Admin@123
+
+User Portal: http://localhost/DLPs/
+   User: testuser
+   Pass: User@123
+
+KEY FEATURES SAVED:
+- Dark/Light Theme (Remembers your choice)
+- All Graphs & Charts
+- Documentation PDFs (Project_Documentation.html)
+- Viva Preparation Guide (Team_Viva_Preparation.html)

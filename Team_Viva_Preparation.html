@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DLPS Team Viva Preparation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fff;
+            color: #1e293b;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #1e293b;
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .header p {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .member-section {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-header {
+            background: #f1f5f9;
+            padding: 15px 25px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .member-title {
+            font-weight: 800;
+            color: #2563eb;
+            font-size: 1.2rem;
+        }
+
+        .member-role {
+            background: #2563eb;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .content-box {
+            padding: 25px;
+        }
+
+        .task-list {
+            margin-bottom: 20px;
+        }
+
+        .task-list h3 {
+            color: #475569;
+            border-bottom: 2px solid #cbd5e1;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .qa-section {
+            background: #f8fafc;
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .question {
+            font-weight: bold;
+            color: #b91c1c;
+            margin-bottom: 8px;
+        }
+
+        .answer {
+            color: #334155;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+        }
+
+        @media print {
+            .print-btn {
+                display: none;
+            }
+
+            body {
+                padding: 0;
+            }
+
+            .member-section {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="print-btn" onclick="window.print()">Save as PDF</button>
+
+    <div class="header">
+        <h1>DLPS Project Defense Guide</h1>
+        <p>Detailed Work Distribution & Viva Voce Questions</p>
+    </div>
+
+    <!-- Member 1 -->
+    <div class="member-section">
+        <div class="member-header">
+            <span class="member-title">Member 1: System Architect & Backend</span>
+            <span class="member-role">Backend Core</span>
+        </div>
+        <div class="content-box">
+            <div class="task-list">
+                <h3>🛠️ Key Contributions</h3>
+                <ul>
+                    <li><strong>Database Architecture:</strong> Designed <code>schema.sql</code>, defining
+                        <code>users</code>, <code>dlp_policies</code>, and relational constraints.</li>
+                    <li><strong>Authentication Core:</strong> Built <code>api/auth/login.php</code> and
+                        <code>register.php</code> using secure session management.</li>
+                    <li><strong>Middleware:</strong> Implemented the <code>Auth</code> class in
+                        <code>includes/auth.php</code> to protect Admin/User routes.</li>
+                    <li><strong>Security:</strong> Implemented CSRF protection and SQL Injection prevention (PDO).</li>
+                </ul>
+            </div>
+            <div class="qa-section">
+                <h3>🎓 Professor's Questions</h3>
+
+                <div class="question">Q1: How do you secure user passwords in the database?</div>
+                <div class="answer">A: We use the <code>password_hash()</code> function with the Bcrypt algorithm, which
+                    automatically handles salting. We never store plain-text passwords.</div>
+
+                <div class="question">Q2: How does your session management prevent Session Hijacking?</div>
+                <div class="answer">A: We regenerate session IDs on login using <code>session_regenerate_id()</code> and
+                    enforce custom expiry times in the database to prevent stale sessions from being reused.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Member 2 -->
+    <div class="member-section">
+        <div class="member-header">
+            <span class="member-title">Member 2: Security Engine Logic</span>
+            <span class="member-role">Algorithms & Logic</span>
+        </div>
+        <div class="content-box">
+            <div class="task-list">
+                <h3>🛠️ Key Contributions</h3>
+                <ul>
+                    <li><strong>Regex Patterns:</strong> Developed the complex Regular Expressions for SSN, Credit Card,
+                        and Email detection.</li>
+                    <li><strong>Scanning Algorithm:</strong> Logic to iterate through file content and match against
+                        active policies from the DB.</li>
+                    <li><strong>Policy Engine:</strong> Backend logic to apply 'Block', 'Warn', or 'Log' actions based
+                        on match results.</li>
+                    <li><strong>Data Validation:</strong> Server-side validation to ensure only allowed file types (txt,
+                        pdf, docx) are processed.</li>
+                </ul>
+            </div>
+            <div class="qa-section">
+                <h3>🎓 Professor's Questions</h3>
+
+                <div class="question">Q1: How does the system detect an SSN? Explain the pattern.</div>
+                <div class="answer">A: We use a Regex pattern like <code>\b\d{3}-\d{2}-\d{4}\b</code>. The
+                    <code>\b</code> ensures word boundaries so we don't accidentally flag part of a longer number.</div>
+
+                <div class="question">Q2: What happens if a file is too large?</div>
+                <div class="answer">A: We check <code>$_FILES['file']['size']</code> before processing. If it exceeds
+                    the limit (e.g., 5MB), we reject it immediately to prevent Denial of Service (DoS) attacks.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Member 3 -->
+    <div class="member-section">
+        <div class="member-header">
+            <span class="member-title">Member 3: Admin Dashboard & Analytics</span>
+            <span class="member-role">Admin Modules</span>
+        </div>
+        <div class="content-box">
+            <div class="task-list">
+                <h3>🛠️ Key Contributions</h3>
+                <ul>
+                    <li><strong>Dashboard Analytics:</strong> Created <code>admin/dashboard.php</code> and the SQL
+                        queries for "Top Violations".</li>
+                    <li><strong>Visualization:</strong> Integrated <strong>Chart.js</strong> to render the dynamic Bar
+                        and Doughnut charts.</li>
+                    <li><strong>Policy Management:</strong> Built <code>admin/policies.php</code> allowing AJAX-based
+                        switching between policy details.</li>
+                    <li><strong>Audit Trail:</strong> Implemented the read-only view of <code>audit_logs</code> for
+                        accountability.</li>
+                </ul>
+            </div>
+            <div class="qa-section">
+                <h3>🎓 Professor's Questions</h3>
+
+                <div class="question">Q1: How are the charts populated with real data?</div>
+                <div class="answer">A: PHP fetches aggregated data (using SQL <code>COUNT</code> and
+                    <code>GROUP BY</code>) and injects it into the JavaScript variables that initialize the Chart.js
+                    instances.</div>
+
+                <div class="question">Q2: Can an admin accidentally delete audit logs?</div>
+                <div class="answer">A: No, the Audit Trail page is designed as "Read-Only". There is no "Delete" button
+                    implemented in the UI for logs to ensure forensic integrity.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Member 4 -->
+    <div class="member-section">
+        <div class="member-header">
+            <span class="member-title">Member 4: Frontend UI/UX & User Portal</span>
+            <span class="member-role">Frontend Lead</span>
+        </div>
+        <div class="content-box">
+            <div class="task-list">
+                <h3>🛠️ Key Contributions</h3>
+                <ul>
+                    <li><strong>UI Design System:</strong> Created <code>style.css</code> variables for the consistent
+                        Dark Mode theme (Glassmorphism).</li>
+                    <li><strong>User Portal:</strong> Built <code>user/dashboard.php</code> for end-users to view their
+                        own scan history.</li>
+                    <li><strong>Interactive Elements:</strong> Developed the "Modal" system for Notifications, Logout,
+                        and Confirmations.</li>
+                    <li><strong>Responsive Layout:</strong> Ensured the dashboard works on different screen sizes using
+                        CSS Grid/Flexbox.</li>
+                </ul>
+            </div>
+            <div class="qa-section">
+                <h3>🎓 Professor's Questions</h3>
+
+                <div class="question">Q1: How did you implement the Dark Mode theme?</div>
+                <div class="answer">A: I used CSS root variables (e.g., <code>--bg-dark</code>,
+                    <code>--text-primary</code>). This makes it easy to maintain consistency and change colors globally
+                    from one file.</div>
+
+                <div class="question">Q2: How does the "Forgot Password" page communicate with the user?</div>
+                <div class="answer">A: It uses JavaScript `fetch` (AJAX) to submit the form without reloading. We
+                    display a success/error alert dynamically by manipulating the DOM based on the JSON response.</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

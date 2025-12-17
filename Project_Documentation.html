@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DLPS Enterprise - Project Documentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: #fff;
+        }
+
+        h1 {
+            color: #1a1f3a;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #2563eb;
+            margin-top: 30px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            color: #4b5563;
+            margin-top: 20px;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 50px;
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .feature-item {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .team-section {
+            margin-top: 40px;
+        }
+
+        .member-card {
+            border: 1px solid #cbd5e1;
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .member-role {
+            font-weight: bold;
+            color: #3b82f6;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
+
+        ul {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .print-btn {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media print {
+            .print-btn {
+                display: none;
+            }
+
+            body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-section">
+        <h1 style="border: none; margin-bottom: 10px;">DLPS Enterprise</h1>
+        <p style="font-size: 1.2rem; color: #64748b;">Data Leakage Prevention System</p>
+        <p><strong>Project Classification:</strong> Enterprise Security • Web Application • PHP/MySQL</p>
+    </div>
+
+    <button class="print-btn" onclick="window.print()">Download as PDF</button>
+
+    <h2>1. Project Overview</h2>
+    <p>
+        <strong>DLPS Enterprise</strong> is a comprehensive security solution designed to prevent the unauthorized
+        transmission of sensitive data.
+        The system acts as a protective shield, analyzing files and data in real-time to detect Identifiable Information
+        (PII),
+        financial records, and confidential corporate documents before they can leave the secure environment.
+    </p>
+
+    <h2>2. Key Features</h2>
+    <div class="feature-grid">
+        <div class="feature-item">
+            <h3>🛡️ Intelligent Scanning Engine</h3>
+            <p>Real-time analysis of files using Regex and Pattern Matching to detect SSNs, Credit Cards, and custom
+                keywords.</p>
+        </div>
+        <div class="feature-item">
+            <h3>📊 Interactive Dashboards</h3>
+            <p>Role-based dashboards for Admins (Analytics, Charts) and Users (Scan History, Status) with dark-mode UI.
+            </p>
+        </div>
+        <div class="feature-item">
+            <h3>⚙️ Dynamic Policy Management</h3>
+            <p>Admins can create, edit, and deploy security policies instantly without code changes.</p>
+        </div>
+        <div class="feature-item">
+            <h3>📝 Comprehensive Audit Trail</h3>
+            <p>Immutable logging of all actions, scans, and violations for compliance and forensic analysis.</p>
+        </div>
+    </div>
+
+    <h2>3. Technology Stack</h2>
+    <ul>
+        <li><strong>Frontend:</strong> HTML5, CSS3 (Modern Variables), JavaScript (Vanilla), Chart.js</li>
+        <li><strong>Backend:</strong> PHP 8.x (Object-Oriented)</li>
+        <li><strong>Database:</strong> MySQL 8.0 (Relational Schema)</li>
+        <li><strong>Security:</strong> Password Hashing (Bcrypt), SQL Injection Protection (PDO), XSS Prevention</li>
+    </ul>
+
+    <h2>4. Team Work Distribution (4 Members)</h2>
+    <p>The project development is divided into four distinct modules to ensure efficiency and specialization.</p>
+
+    <div class="team-section">
+        <div class="member-card">
+            <div class="member-role">Member 1: System Architect & Backend Core</div>
+            <ul>
+                <li><strong>Database Design:</strong> Designing the schema.sql (Users, Policies, Logs).</li>
+                <li><strong>Authentication Module:</strong> Login, Registration, Forgot Password, Session Management.
+                </li>
+                <li><strong>API Development:</strong> Creating RESTful endpoints for frontend communication.</li>
+                <li><strong>Security Hardening:</strong> Implementation of auth middleware and encryption.</li>
+            </ul>
+        </div>
+
+        <div class="member-card">
+            <div class="member-role">Member 2: Security Engine & Algorithms</div>
+            <ul>
+                <li><strong>Scanning Logic:</strong> Developing the regular expressions and pattern matching algorithms.
+                </li>
+                <li><strong>File Processing:</strong> Handling file uploads, reading content, and parsing data.</li>
+                <li><strong>Policy Enforcement:</strong> Logic to check files against active Database Policies.</li>
+                <li><strong>Risk Assessment:</strong> Calculating risk levels (Low, Medium, Critical) based on findings.
+                </li>
+            </ul>
+        </div>
+
+        <div class="member-card">
+            <div class="member-role">Member 3: Admin Portal & Analytics</div>
+            <ul>
+                <li><strong>Admin Dashboard:</strong> Creating the main analytics hub with Chart.js visualizations.</li>
+                <li><strong>Policy Manager:</strong> UI and logic for CRUD operations on Security Policies.</li>
+                <li><strong>Reporting System:</strong> Generating summary reports and managing the Audit Trail view.
+                </li>
+                <li><strong>User Management:</strong> Admin tools for suspending/activating users.</li>
+            </ul>
+        </div>
+
+        <div class="member-card">
+            <div class="member-role">Member 4: Frontend UI/UX & User Portal</div>
+            <ul>
+                <li><strong>Design System:</strong> Creating the global CSS variables, dark theme, and responsive
+                    layout.</li>
+                <li><strong>User Dashboard:</strong> Interface for end-users to upload files and view scan results.</li>
+                <li><strong>Feedback Systems:</strong> Implementing toast notifications, modals, and loading states.
+                </li>
+                <li><strong>Client-Side Validation:</strong> Form validation for registration and policies.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="margin-top: 50px; text-align: center; font-size: 0.9rem; color: #94a3b8;">
+        Generated by DLPS System • 2025
+    </div>
+</body>
+
+</html>
