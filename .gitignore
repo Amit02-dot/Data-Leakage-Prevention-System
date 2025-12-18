@@ -1,0 +1,12 @@
+vendor/
+node_modules/
+.env
+config/database.php
+uploads/*
+!uploads/.gitkeep
+test_files/
+*.log
+.vscode/
+.idea/
+*.tmp
+setup.bat

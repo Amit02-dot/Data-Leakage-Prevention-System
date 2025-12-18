@@ -222,7 +222,7 @@ $classification_stats = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="card">
             <div class="card-header">
                 <h2 class="card-title">Recent Policy Violations</h2>
-                <a href="violations.php" class="btn btn-secondary">View All</a>
+                <a href="audit-trail.php?status=blocked" class="btn btn-secondary">View All</a>
             </div>
             <div class="card-body" style="padding: 0;">
                 <div class="table-container">
@@ -264,7 +264,7 @@ $classification_stats = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     </td>
                                     <td><?= date('M d, Y H:i', strtotime($violation['scanned_at'])) ?></td>
                                     <td>
-                                        <button class="btn btn-secondary" style="padding: 0.375rem 0.75rem; font-size: 0.8rem;">
+                                        <button class="btn btn-secondary" style="padding: 0.375rem 0.75rem; font-size: 0.8rem;" onclick='alert("File: " + <?= json_encode($violation["file_name"]) ?> + "\nRisk: " + <?= json_encode($violation["risk_level"]) ?> + "\nPolicy: " + <?= json_encode($violation["policy_name"] ?? "N/A") ?>)'>
                                             <i class="fas fa-eye"></i> Details
                                         </button>
                                     </td>

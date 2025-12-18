@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DLPS Project Report</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px;
+            color: #000;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: Arial, sans-serif;
+            color: #2c3e50;
+        }
+
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 24pt;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 14pt;
+            margin-bottom: 50px;
+            font-weight: bold;
+        }
+
+        .chapter-title {
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+            margin-top: 50px;
+            page-break-before: always;
+        }
+
+        /* First chapter shouldn't break page immediately if it follows TOC */
+        h3.first-chapter {
+            page-break-before: auto;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul,
+        ol {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        pre {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .caption {
+            text-align: center;
+            font-style: italic;
+            font-size: 0.9em;
+            color: #666;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: sans-serif;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        @media print {
+            .print-btn {
+                display: none;
+            }
+
+            body {
+                padding: 0;
+                margin: 20mm;
+            }
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="print-btn" onclick="window.print()">Save as PDF</button>
+
+    <div style="text-align: center; margin-top: 100px; margin-bottom: 100px;">
+        <h1>A PROJECT REPORT</h1>
+        <div class="subtitle">ON</div>
+
+        <h1>DATA LEAKAGE PREVENTION SYSTEM (DLPS)</h1>
+
+        <div class="subtitle" style="margin-top: 50px;">
+            SUBMITTED IN PARTIAL FULFILLMENT OF THE REQUIREMENTS FOR THE AWARD OF THE DEGREE OF
+        </div>
+
+        <h2>BACHELOR OF TECHNOLOGY</h2>
+    </div>
+
+    <div class="chapter-title" style="page-break-before: always;">
+        <h3>ABSTRACT</h3>
+    </div>
+    <p>
+        In the modern digital landscape, data security is paramount. The <strong>Data Leakage Prevention System
+            (DLPS)</strong> is a comprehensive enterprise-grade web application designed to detect and prevent potential
+        data breaches within an organization. The system monitors data transfer channels, specifically file uploads, to
+        identify sensitive information such as Personally Identifiable Information (PII) and confidential keywords
+        before it leaves the secure environment. This project implements a robust Role-Based Access Control (RBAC)
+        model, ensuring a strict separation between User and Administrator privileges. Key features include a real-time
+        scanning engine utilizing Regular Expressions (Regex) and pattern matching, an interactive dashboard for
+        analytics, dynamic policy management, and an immutable audit trail for forensic analysis. The system is built
+        using PHP for server-side logic, MySQL for the database, and a responsive frontend using HTML5, CSS3, and
+        JavaScript, ensuring a secure and user-friendly experience for all stakeholders.
+    </p>
+
+    <div class="chapter-title">
+        <h3>TABLE OF CONTENTS</h3>
+    </div>
+    <ul>
+        <li><strong>1. INTRODUCTION</strong></li>
+        <li><strong>2. SYSTEM ANALYSIS</strong></li>
+        <li><strong>3. SYSTEM REQUIREMENT SPECIFICATION</strong></li>
+        <li><strong>4. SYSTEM DESIGN</strong></li>
+        <li><strong>5. IMPLEMENTATION</strong></li>
+        <li><strong>6. TESTING</strong></li>
+        <li><strong>7. CONCLUSION AND FUTURE SCOPE</strong></li>
+        <li><strong>8. PROJECT SCREENSHOTS</strong></li>
+
+    </ul>
+
+    <div class="chapter-title">
+        <h3>CHAPTER 1: INTRODUCTION</h3>
+    </div>
+
+    <h4>1.1 Overview</h4>
+    <p>The Data Leakage Prevention System (DLPS) is a specialized security tool developed to address the growing threat
+        of internal data theft and accidental data exposure. By implementing a gateway that scans all outgoing files,
+        the system ensures compliance with organizational data security policies.</p>
+
+    <h4>1.2 Problem Statement</h4>
+    <p>Traditional security measures often focus on external threats (firewalls, antivirus). However, a significant
+        percentage of data breaches originate internally—either through malicious intent or employee negligence.
+        Organizations lack affordable, easy-to-configure tools to monitor and block sensitive data transmission in
+        real-time.</p>
+
+    <h4>1.3 Objectives</h4>
+    <ul>
+        <li>To develop a web-based platform for secure file scanning.</li>
+        <li>To implement strict Role-Based Access Control (User vs Admin).</li>
+        <li>To detect sensitive patterns like Credit Card numbers, SSNs, and confidential keywords.</li>
+        <li>To maintain a secure, immutable log of all attempts for auditing.</li>
+    </ul>
+
+    <h4>1.4 Scope of the Project</h4>
+    <p>The project covers the development of a web portal where users can upload files for verification. Administrators
+        can define what constitutes "sensitive data" by creating dynamic policies. The scope extends to reporting and
+        analytics but excludes network-level packet sniffing (currently focused on application-level file upload
+        scanning).</p>
+
+    <div class="chapter-title">
+        <h3>CHAPTER 2: SYSTEM ANALYSIS</h3>
+    </div>
+
+    <h4>2.1 Existing System</h4>
+    <p>Currently, many organizations rely on manual auditing or trust-based policies, which are prone to human error.
+        Commercial DLP solutions exist but are often prohibitively expensive and complex to deploy for smaller setups.
+    </p>
+
+    <h4>2.2 Proposed System</h4>
+    <p>The proposed DLPS is a lightweight, effective, and user-friendly web application. It automates the detection
+        process, provides instant feedback to users, and alerts administrators. It centralizes policy management, making
+        it easy to update security rules across the organization instantly.</p>
+
+    <h4>2.3 Feasibility Study</h4>
+    <ul>
+        <li><strong>Technical Feasibility</strong>: The system manages file I/O and text processing, which is
+            well-supported by PHP. MySQL handles the relational data efficiently.</li>
+        <li><strong>Operational Feasibility</strong>: The UI is designed to be intuitive, requiring minimal training.
+        </li>
+        <li><strong>Economic Feasibility</strong>: Built on open-source technologies (XAMPP stack), keeping costs at
+            zero.</li>
+    </ul>
+
+    <div class="chapter-title">
+        <h3>CHAPTER 3: SYSTEM REQUIREMENT SPECIFICATION</h3>
+    </div>
+
+    <h4>3.1 Hardware Requirements</h4>
+    <ul>
+        <li>Processor: Intel Core i3 or higher</li>
+        <li>RAM: 4 GB minimum</li>
+        <li>Hard Disk: 10 GB free space</li>
+    </ul>
+
+    <h4>3.2 Software Requirements</h4>
+    <ul>
+        <li>Operating System: Windows / Linux</li>
+        <li>Server: Apache Web Server (via XAMPP)</li>
+        <li>Database: MySQL</li>
+        <li>Language: PHP 8.0+</li>
+        <li>Browser: Chrome, Firefox, or Edge</li>
+    </ul>
+
+    <h4>3.3 Functional Requirements</h4>
+    <ul>
+        <li><strong>Authentication</strong>: Secure login for Users and Admins.</li>
+        <li><strong>File Upload</strong>: Support for text-based files.</li>
+        <li><strong>Scanning</strong>: Regex-based pattern matching.</li>
+        <li><strong>Reporting</strong>: Dashboard visualization of safe vs. blocked files.</li>
+        <li><strong>Policy Management</strong>: CRUD operations for DLP policies.</li>
+    </ul>
+
+    <h4>3.4 Non-Functional Requirements</h4>
+    <ul>
+        <li><strong>Security</strong>: Passwords hashed using Bcrypt. Session hijacking protection.</li>
+        <li><strong>Performance</strong>: Scan results generated in under 1 second for standard files.</li>
+        <li><strong>Reliability</strong>: 99.9% uptime for the local server environment.</li>
+    </ul>
+
+    <div class="chapter-title">
+        <h3>CHAPTER 4: SYSTEM DESIGN</h3>
+    </div>
+
+    <h4>4.1 System Architecture</h4>
+    <p>The system follows the <strong>Model-View-Controller (MVC)</strong> architectural pattern principles (adapted for
+        core PHP).</p>
+    <ul>
+        <li><strong>Presentation Layer</strong>: HTML/CSS/JS Frontend.</li>
+        <li><strong>Logic Layer</strong>: PHP scripts handling scanning and routing.</li>
+        <li><strong>Data Layer</strong>: MySQL storage for logs and user data.</li>
+    </ul>
+
+    <h4>4.2 Data Flow</h4>
+    <ol>
+        <li>User logs in -> Uploads File.</li>
+        <li>Server receives file -> Reads content.</li>
+        <li>Content passed to Scanning Engine -> Checked against <code>dlp_policies</code>.</li>
+        <li>Result (Safe/Risk) -> Stored in Database (<code>file_scans</code>).</li>
+        <li>Response sent to User Dashboard -> Admin Audit Log updated.</li>
+    </ol>
+
+    <h4>4.3 Database Design (Schema)</h4>
+    <ul>
+        <li><code>users</code>: Stores user credentials and profile info.</li>
+        <li><code>admins</code>: Specialized table for high-privilege accounts.</li>
+        <li><code>file_scans</code>: Records of every file processed (filename, risk level, hash).</li>
+        <li><code>dlp_policies</code>: Rules defining regex patterns and severity.</li>
+        <li><code>audit_logs</code>: Chronological record of system activities.</li>
+    </ul>
+
+    <h4>4.4 Module Description</h4>
+    <ul>
+        <li><strong>Admin Module</strong>: Dashboard, User Management, Policy Management, Reports.</li>
+        <li><strong>User Module</strong>: Dashboard, Upload Interface, History, Profile.</li>
+        <li><strong>Auth Module</strong>: Session handling, Registration, Login, Logout.</li>
+    </ul>
+
+    <div class="chapter-title">
+        <h3>CHAPTER 5: IMPLEMENTATION</h3>
+    </div>
+
+    <h4>5.1 Technology Stack</h4>
+    <ul>
+        <li><strong>Languages</strong>: PHP, JavaScript (ES6), SQL.</li>
+        <li><strong>Libraries</strong>: Chart.js (Visualization), FontAwesome (Icons).</li>
+        <li><strong>Styling</strong>: Custom CSS with Dark Theme aesthetics.</li>
+    </ul>
+
+    <h4>5.2 Key Algorithms (Scanning Logic)</h4>
+    <p>The core engine iterates through active policies. For each policy, it applies the associated Regular Expression
+        to the file content.</p>
+    <pre>
+foreach ($policies as $policy) {
+    if (preg_match($policy['pattern'], $fileContent)) {
+        $riskLevel = $policy['severity'];
+        // Flag file as risk
+    }
+}
+    </pre>
+
+    <h4>5.3 Security Implementation</h4>
+    <ul>
+        <li><strong>SQL Injection</strong>: Prevented using PDO Prepared Statements.</li>
+        <li><strong>XSS</strong>: Input sanitization on all output fields.</li>
+        <li><strong>Access Control</strong>: Session-based checks <code>$_SESSION['role']</code> on every page load.
+        </li>
+    </ul>
+
+    <div class="chapter-title">
+        <h3>CHAPTER 6: TESTING</h3>
+    </div>
+
+    <h4>6.1 Testing Methodologies</h4>
+    <ul>
+        <li><strong>Unit Testing</strong>: Testing individual functions (e.g., login validation).</li>
+        <li><strong>Integration Testing</strong>: Verifying the flow from Upload -> Scan -> Database -> Dashboard.</li>
+        <li><strong>Security Testing</strong>: Attempting unauthorized access to Admin pages (successfully blocked).
+        </li>
+    </ul>
+
+    <h4>6.2 Test Cases</h4>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Test Description</th>
+            <th>Expected Result</th>
+            <th>Actual Result</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td>TC1</td>
+            <td>Admin Login</td>
+            <td>Access Dashboard</td>
+            <td>Accessed</td>
+            <td>Pass</td>
+        </tr>
+        <tr>
+            <td>TC2</td>
+            <td>User Access Admin Page</td>
+            <td>Access Denied</td>
+            <td>Redirected to Login</td>
+            <td>Pass</td>
+        </tr>
+        <tr>
+            <td>TC3</td>
+            <td>Upload SSN File</td>
+            <td>Block/Critical Alert</td>
+            <td>Blocked</td>
+            <td>Pass</td>
+        </tr>
+        <tr>
+            <td>TC4</td>
+            <td>Upload Safe Text</td>
+            <td>Safe Status</td>
+            <td>Safe Status</td>
+            <td>Pass</td>
+        </tr>
+    </table>
+
+    <div class="chapter-title">
+        <h3>CHAPTER 7: CONCLUSION AND FUTURE SCOPE</h3>
+    </div>
+
+    <h4>7.1 Conclusion</h4>
+    <p>The DLPS project successfully demonstrates a functional security tool capable of mitigating data leakage risks.
+        It meets all primary objectives, providing a secure, user-friendly, and effective solution for file monitoring.
+    </p>
+
+    <h4>7.2 Future Enhancements</h4>
+    <ul>
+        <li>Support for PDF and Image OCR scanning.</li>
+        <li>Integration with email servers for outbound attachment scanning.</li>
+        <li>AI/ML-based anomaly detection for unknown threat patterns.</li>
+    </ul>
+
+    <div class="chapter-title">
+        <h3>CHAPTER 8: PROJECT SCREENSHOTS</h3>
+    </div>
+
+    <h4>8.1 Authentication</h4>
+    <p><strong>Login Page</strong></p>
+    <p>To maintain security, the user and admin login pages are separate.</p>
+    <img src="project_screenshots/login_page.png" alt="User Login Page">
+
+    <p><strong>Admin Login</strong></p>
+    <img src="project_screenshots/admin_login.png" alt="Admin Login Page">
+
+    <h4>8.2 User Portal</h4>
+    <p><strong>User Dashboard</strong></p>
+    <p>The user dashboard provides a quick overview of recent activities and scan status.</p>
+    <img src="project_screenshots/user_dashboard.png" alt="User Dashboard">
+
+    <p><strong>File Upload Interface</strong></p>
+    <p>Users can drag and drop files for real-time DLP scanning.</p>
+    <img src="project_screenshots/file_upload.png" alt="File Upload & Scan">
+
+    <h4>8.3 Admin Portal</h4>
+    <p><strong>Admin Dashboard</strong></p>
+    <p>A SOC-style dashboard showing scanning trends, risk distribution, and system health.</p>
+    <img src="project_screenshots/admin_dashboard.png" alt="Admin Dashboard">
+
+    <p><strong>Policy Management</strong></p>
+    <p>Admins can verify and configure regex patterns for data detection.</p>
+    <img src="project_screenshots/admin_policies.png" alt="Policy Management">
+
+    <p><strong>Audit Trails</strong></p>
+    <p>Immutable logs of all system activities for forensic analysis.</p>
+    <img src="project_screenshots/admin_audit.png" alt="Audit Logs">
+
+
+
+</body>
+
+</html>
